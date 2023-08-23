@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Form Dokumen Pendukung | SMK Ma'arif Wonosari</title>
+    <title>Form Nilai | SMK Ma'arif Wonosari</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -21,35 +21,30 @@
     <form>
         <div class="card card-success">
             <div class="card-header">
-                <h3 class="card-title">Form Upload Dokumen</h3>
+                <h3 class="card-title">Form Nilai Ujian</h3>
             </div>
             <div class="card-body">
                 <div class="form-group">
-                    <label for="exampleInputFile">Surat Keterangan Lulus</label>
-                    <div class="input-group">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="exampleInputFile">
-                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                        </div>
-                        <div class="input-group-append">
-                            <span class="input-group-text">Upload</span>
-                        </div>
-                    </div>
+                    <label for="exampleInputEmail1">Bahasa Indonesia</label>
+                    <input type="number" class="form-control" id="exampleInputEmail1"
+                        placeholder="Enter nilai bahasa indonesia">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputFile">Foto 4x6 </label>
-                    <div class="input-group">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="exampleInputFile">
-                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                        </div>
-                        <div class="input-group-append">
-                            <span class="input-group-text">Upload</span>
-                        </div>
-                    </div>
+                    <label for="exampleInputEmail1">Bahasa Inggris</label>
+                    <input type="number" class="form-control" id="exampleInputEmail1"
+                        placeholder="Enter nilai bahasa inggris">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputFile">Dokumen Pendukung Lainnya </label>
+                    <label for="exampleInputEmail1">Matematika</label>
+                    <input type="number" class="form-control" id="exampleInputEmail1"
+                        placeholder="Enter nilai matematika">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">IPA</label>
+                    <input type="number" class="form-control" id="exampleInputEmail1" placeholder="Enter nilai ipa">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputFile">Scan Document Nilai Ujian</label>
                     <div class="input-group">
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="exampleInputFile">
@@ -65,6 +60,8 @@
         </div>
         <div class="card-footer">
             <button type="submit" class="btn btn-success">Registrasi</button>
+            <button type="submit" class="btn btn-primary">Next</button>
+
         </div>
     </form>
 </body>

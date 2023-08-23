@@ -51,6 +51,8 @@
         </div>
         <div class="card-footer">
             <button type="submit" class="btn btn-success">Registrasi</button>
+            <button type="submit" class="btn btn-primary">Next</button>
+
         </div>
     </form>
 </body>
