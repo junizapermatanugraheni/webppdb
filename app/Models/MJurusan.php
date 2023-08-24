@@ -9,8 +9,13 @@ class MJurusan extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'id',
         'nama_jurusan',
     ];
     protected $table = 'm_jurusans';
+
+    public function daftarsiswa(){
+        return $this->hasMany(daftarsiswa::class);
+    }
 
 }

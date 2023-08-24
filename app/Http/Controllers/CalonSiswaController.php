@@ -7,6 +7,7 @@ use App\Models\ModelFormPendaftaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use App\Helpers\Helper;
 
 class CalonSiswaController extends Controller
 {
@@ -16,22 +17,20 @@ class CalonSiswaController extends Controller
     }
     public function login_siswa(Request $request)
     {
-        Session::flash('nik', $request->nik);
-        Session::flash('tgllahir', $request->tgllahir);
+
+        $db = 
         $request->validate([
             'nik' => 'required',
             'tgllahir' => 'required',
         ], [
-            'nik.required' => 'NIK harus diisi',
+            'nik.required' => 'nik harus diisi',
             'tgllahir.require' => 'Tanggal Lahir harus diisi',
         ]);
 
-        $infologin = [
-            'nik' => $request->nik,
-            'tgllahir' => $request->tgllahir,
-        ];
 
-        if (Auth::attempt($infologin)) {
+        $infologin = $request->only('nik','tgllahir');
+
+        if (Auth::guard('calonsiswa')->attempt($infologin)) {
             return redirect('siswa/pendaftaran')->with('Success', 'Berhasil Login');
         } else {
             return redirect('siswa')->withErrors('NIK dan Tanggal Lahir Tidak Ditemukan');
@@ -46,21 +45,21 @@ class CalonSiswaController extends Controller
 
     public function form_pendaftaran()
     {
-        $jurusan = MJurusan::all();
-
+        $jurusan = MJurusan::all('nama_jurusan');
         return view('siswa/form_pendaftaran', compact('jurusan'));
     }
 
     public function create(Request $request)
     {
-
+        
+        // Session::flash('nopendaftaran', $request->Helper::IDGenerator(new ModelFormPendaftaran, 'nopendaftaran', 2, 'PPDB23'));
         Session::flash('nik', $request->nik);
         Session::flash('tgllahir', $request->tgllahir);
         Session::flash('tmplahir', $request->tmplahir);
         Session::flash('nmlengkap', $request->nmlengkap);
         Session::flash('nisn', $request->nisn);
         Session::flash('alamat', $request->alamat);
-        Session::flash('notlp_siswa', $request->notlp_siswa);
+        Session::flash('notelp_siswa', $request->notelp_siswa);
         Session::flash('jnskelamin', $request->jnskelamin);
         Session::flash('agama', $request->agama);
         Session::flash('asal_sekolah', $request->asal_sekolah);
@@ -73,12 +72,12 @@ class CalonSiswaController extends Controller
         Session::flash('nilai_binggris', $request->nilai_binggris);
         Session::flash('nilai_mtk', $request->nilai_mtk);
         Session::flash('nilai_ipa', $request->nilai_ipa);
-        Session::flash('doc_nilaiujian', $request->doc_nilaiujian);
-        Session::flash('idjurusan1', $request->idjurusan1);
-        Session::flash('idjurusan2', $request->idjurusan2);
-        Session::flash('doc_ketlulus', $request->doc_ketlulus);
-        Session::flash('doc_foto', $request->doc_foto);
-        Session::flash('doc_lainnya', $request->doc_lainnya);
+        Session::flash('doc_nilaiujian', $request->file('doc_nilaiujian')->store('public'),);
+        Session::flash('idjurusan', $request->idjurusan);
+
+        Session::flash('doc_ketlulus', $request->file('doc_ketlulus')->store('public'));
+        Session::flash('doc_foto', $request->file('doc_foto')->store('public'));
+        Session::flash('doc_lainnya',  $request->file('doc_lainnya')->store('public'));
 
         $request->validate([
             'nik' => 'required',
@@ -101,8 +100,8 @@ class CalonSiswaController extends Controller
             'nilai_mtk' => 'required',
             'nilai_ipa' => 'required',
             'doc_nilaiujian' => 'required|mimes:jpeg,pdf,jpg,png',
-            'idjurusan1' => 'required',
-            'idjurusan2' => 'required',
+            'idjurusan' => 'required',
+           
             'doc_ketlulus' => 'required|mimes:jpeg,pdf,jpg,png',
             'doc_foto' => 'required|mimes:jpeg,pdf,jpg,png',
             'doc_lainnya' => 'mimes:jpeg,pdf,jpg,png',
@@ -128,8 +127,8 @@ class CalonSiswaController extends Controller
             'nilai_ipa.required' => 'Nilai IPA harus diisi',
             'doc_nilaiujian.required' => 'Scan Document Nilai harus diupload dengan format jpeg,pdf,jpg,png',
             'doc_nilaiujian.mimes' => 'doc_nilaiujian Format yang diperbolehkan jpeg,pdf,jpg',
-            'idjurusan1.required' => 'Pilihan Jurusan 1 harus diisi',
-            'idjurusan2.required' => 'Pilihan Jurusan 2 harus diisi',
+            'idjurusan.required' => 'Pilihan Jurusan harus diisi',
+            
             'doc_ketlulus.required' => 'Document Surat Keterangan Lulus harus diupload dengan format jpeg,pdf,jpg,png',
             'doc_ketlulus.mimes' => 'doc_ketlulus Format yang diperbolehkan jpeg,pdf,jpg',
             'doc_foto.required' => 'doc_foto Document Foto harus diupload dengan format jpeg,pdf,jpg,png',
@@ -137,14 +136,17 @@ class CalonSiswaController extends Controller
 
         ]);
 
+        $nopendaftaran = Helper::IDGenerator(new ModelFormPendaftaran, 'nopendaftaran', 2, 'PPDB23');
+       
         $data = [
+            'nopendaftaran' => $request->$nopendaftaran->nopendaftaran ?? $nopendaftaran,
             'nik' => $request->nik,
             'tgllahir' => $request->tgllahir,
             'tmplahir' => $request->tmplahir,
             'nmlengkap' => $request->nmlengkap,
             'nisn' => $request->nisn,
             'alamat' => $request->alamat,
-            'notlp_siswa' => $request->notlp_siswa,
+            'notelp_siswa' => $request->notelp_siswa,
             'jnskelamin' => $request->jnskelamin,
             'agama' => $request->agama,
             'asal_sekolah' => $request->asal_sekolah,
@@ -157,13 +159,13 @@ class CalonSiswaController extends Controller
             'nilai_binggris' => $request->nilai_binggris,
             'nilai_mtk' => $request->nilai_mtk,
             'nilai_ipa' => $request->nilai_ipa,
-            'doc_nilaiujian' => $request->doc_nilaiujian,
-            'idjurusan1' => $request->idjurusan1,
-            'idjurusan2' => $request->idjurusan2,
-            'doc_ketlulus' => $request->doc_ketlulus,
-            'doc_foto' => $request->doc_foto,
-            'doc_lainnya' => $request->doc_lainnya,
+            'doc_nilaiujian' => $request->file('doc_nilaiujian')->store('public'),
+            'idjurusan' => $request->idjurusan,
+            'doc_ketlulus' => $request->file('doc_ketlulus')->store('public'),
+            'doc_foto' => $request->file('doc_foto')->store('public'),
+            'doc_lainnya' => $request->file('doc_lainnya')->store('public'),
         ];
+
         ModelFormPendaftaran::create($data);
 
         return redirect('siswa')->with('Berhasil melakukan registrasi');

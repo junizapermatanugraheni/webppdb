@@ -11,7 +11,7 @@
                 </li>
                 <li class="nav-item"><a class="nav-link text-white" href="/petunjuk">PETUNJUK</a></li>
                 <li class="nav-item"><a class="nav-link text-white" href="/pageinformasi">INFORMASI</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="/pengumuman">PENGUMUMAN</a></li>
+                {{-- <li class="nav-item"><a class="nav-link text-white" href="/pengumuman">PENGUMUMAN</a></li> --}}
                 {{-- @if (Auth::check())
                     <li class="nav-item"><a class="nav-link text-white" href="/siswa/logout">LOGOUT</a></li>
                 @endif --}}

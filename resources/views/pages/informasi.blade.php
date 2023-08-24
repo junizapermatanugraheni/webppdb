@@ -52,10 +52,7 @@
                         <thead>
                             <tr>
                                 <th
-                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">
-                                    No</th>
-                                <th
-                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 text-left">
+                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 text-center">
                                     Jurusan</th>
                                 <th
                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 text-center">
@@ -70,31 +67,27 @@
                         </thead>
                         <tbody>
                             <?php
-                            //  $i = $data->firstItem(); 
+                            //  $i = $data->firstItem();
                             ?>
-                            {{-- @foreach ($data as $item) --}}
+                            @foreach ($data as $item)
                                 <tr>
                                     <td class="align-middle text-center">
-                                        {{-- {{ $i }} --}}
-                                    </td>
-                                    <td>
-                                        {{-- {{ $item->nama_jurusan }} --}}
-                                    </td>
-                                    <td class="align-middle text-center"> 
-                                        {{-- {{ $item->kuota }} --}}
-                                    </td>
-                                    <td class="align-middle text-center"> 
-                                        {{-- {{ $item->akreditasi }} --}}
+                                        {{ $item->nama_jurusan }}
                                     </td>
                                     <td class="align-middle text-center">
-                                         {{-- {{ $item->jmlkelas }} --}}
-                                        </td>
-
+                                        {{ $item->kuota }}
+                                    </td>
+                                    <td class="align-middle text-center">
+                                        {{ $item->akreditasi }}
+                                    </td>
+                                    <td class="align-middle text-center">
+                                        {{ $item->jmlkelas }}
+                                    </td>
                                 </tr>
-                                <?php 
-                                // $i++; 
+                                <?php
+                                // $i++;
                                 ?>
-                            {{-- @endforeach --}}
+                            @endforeach
                         </tbody>
                     </table>
                     <div class="mx-4 mt-5">

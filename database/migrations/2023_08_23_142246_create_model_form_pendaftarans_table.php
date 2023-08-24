@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->char('nopendaftaran');
             $table->string('nmlengkap');
-            $table->int('nik');
+            $table->int('nik')->unique();
             $table->string('nisn');
             $table->string('alamat');
             $table->string('notelp_siswa');

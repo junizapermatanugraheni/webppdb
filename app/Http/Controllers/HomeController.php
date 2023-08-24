@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ModelInformasi;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -19,7 +20,8 @@ class HomeController extends Controller
     }
     public function pageinformasi()
     {
-        return view('pages/informasi');
+        $data = ModelInformasi::all();
+        return view('pages/informasi')->with('data', $data);
     }
     public function pengumuman()
     {

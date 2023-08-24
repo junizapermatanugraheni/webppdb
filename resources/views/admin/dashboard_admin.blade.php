@@ -68,14 +68,6 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white " href="/masterpetunjuk">
-                            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                                <i class="material-icons opacity-10">view_in_ar</i>
-                            </div>
-                            <span class="nav-link-text ms-1">Master Petunjuk PPDB</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link text-white " href="informasi">
                             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                                 <i class="material-icons opacity-10">view_in_ar</i>
@@ -171,7 +163,7 @@
                             </div>
                             <div class="text-end pt-1">
                                 <p class="text-sm mb-0 text-capitalize">Jumlah Pendaftar</p>
-                                <h4 class="mb-0">$53k</h4>
+                                <h4 class="mb-0">{{  }}</h4>
                             </div>
                         </div>
                         <hr class="dark horizontal my-0">

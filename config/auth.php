@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'calonsiswa' => [
+            'driver' => 'session',
+            'provider' => 'model_form_pendaftarans',
+        ],
     ],
 
     /*
@@ -65,10 +69,10 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'calonsiswa' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\ModelFormPendaftaran::class,
+        ],
     ],
 
     /*

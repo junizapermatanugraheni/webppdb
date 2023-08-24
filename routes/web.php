@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CalonSiswaController;
+use App\Http\Controllers\DaftarSiswaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InformasiController;
 use App\Http\Controllers\MasterJurusanController;
@@ -31,8 +32,8 @@ Route::get('/petunjuk', [HomeController::class, 'petunjuk']);
 Route::get('/pengumuman', [HomeController::class, 'pengumuman']);
 
 
-Route::get('/siswa', [CalonSiswaController::class, 'index']);
-Route::post('/siswa/login_siswa', [CalonSiswaController::class, 'login_siswa']);
+Route::get('/siswa', [CalonSiswaController::class, 'index'])->name('create');
+Route::post('/siswa/login_siswa', [CalonSiswaController::class, 'login_siswa'])->name('siswa/login_siswa');
 Route::post('/siswa/logout', [CalonSiswaController::class, 'logout']);
 
 
@@ -40,9 +41,6 @@ Route::get('/siswa/pendaftaran_siswa', [CalonSiswaController::class, 'pendaftara
 Route::get('/siswa/form_pendaftaran', [CalonSiswaController::class, 'form_pendaftaran']);
 Route::post('/siswa/create', [CalonSiswaController::class, 'create']);
 
-// Route::post('/form_nilai', [CalonSiswaController::class, 'nilai_siswa']);
-// Route::post('/form_jurusan', [CalonSiswaController::class, 'jurusan_siswa']);
-// Route::post('/form_dokumen', [CalonSiswaController::class, 'dokumen_siswa']);
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/auth', [AdminController::class, 'auth'])->name('login');
@@ -66,3 +64,5 @@ Route::get('/masterpetunjuk', [AdminController::class, 'masterpetunjuk']);
 
 Route::resource('mjurusan', MasterJurusanController::class);
 Route::resource('informasi', InformasiController::class);
+
+Route::get('/daftarsiswa',[DaftarSiswaController::class, 'index']);

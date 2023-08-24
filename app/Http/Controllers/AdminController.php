@@ -45,7 +45,6 @@ class AdminController extends Controller
     }
     public function admin()
     {
-
         return view('admin/dashboard_admin');
     }
     public function kepsek()
@@ -54,6 +53,7 @@ class AdminController extends Controller
     }
     public function dashboard()
     {
+        
         return view('admin/dashboard_admin');
     }
     public function daftarsiswa()

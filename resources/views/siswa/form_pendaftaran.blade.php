@@ -28,8 +28,9 @@
         </div>
 
     @endif
-    <form action="/siswa/create" method="post" enctype="multipart/form-data">
-        @csrf
+    <form action="/siswa/create/" method="POST" enctype="multipart/form-data">
+        {{ csrf_field() }}
+        {{ method_field('POST') }}
         <div class="card card-success">
             <div class="card-header">
                 <h3 class="card-title">Form Identitas Siswa</h3>
@@ -71,9 +72,9 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="notlp_siswa">Nomor Telepon Siswa</label>
-                            <input type="number" class="form-control" id="notlp_siswa" name="notlp_siswa"
-                                placeholder="Enter Nomor Telepon Siswa" value="{{ Session::get('notlp_siswa') }}">
+                            <label for="notelp_siswa">Nomor Telepon Siswa</label>
+                            <input type="text" class="form-control" id="notelp_siswa" name="notelp_siswa"
+                                placeholder="Enter Nomor Telepon Siswa" value="{{ Session::get('notelp_siswa') }}">
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -95,7 +96,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Jenis Kelamin</label>
-                            <select class="custom-select" name="jnskelamin" >
+                            <select class="custom-select" name="jnskelamin">
                                 <option value="">-- Pilih --</option>
                                 <option value="laki-laki">Laki - laki</option>
                                 <option value="perempuan">Perempuan</option>
@@ -154,22 +155,11 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="form-group">
-                            <label>Jurusan 1</label>
-                            <select class="custom-select" name="idjurusan1">
-                                <option value="">-- Pilih Jurusan 1 --</option>
-                                @foreach ($jurusan as $item)
-                                    <option value="{{ $item->id }}">{{ $item->nama_jurusan }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Jurusan 2</label>
-                            <select class="custom-select" name="idjurusan2">
-                                <option value="">-- Pilih Jurusan 2 --</option>
+                            <label>Jurusan</label>
+                            <select class="custom-select" name="idjurusan">
+                                <option value="">-- Pilih Jurusan --</option>
                                 @foreach ($jurusan as $item)
                                     <option value="{{ $item->id }}">{{ $item->nama_jurusan }}</option>
                                 @endforeach
@@ -207,7 +197,8 @@
                 </div>
                 <div class="form-group">
                     <label for="doc_nilaiujian">Scan Document Nilai Ujian</label>
-                    <input type="file" class="form-control" id="doc_nilaiujian" name="doc_nilaiujian" value="{{ Session::get('doc_nilaiujian') }}">
+                    <input type="file" class="form-control" id="doc_nilaiujian" name="doc_nilaiujian"
+                        value="{{ Session::get('doc_nilaiujian') }}">
                 </div>
 
             </div>
@@ -219,16 +210,19 @@
             <div class="card-body">
                 <div class="form-group">
                     <label for="doc_ketlulus">Surat Keterangan Lulus</label>
-                    <input type="file" class="form-control" id="doc_ketlulus" name="doc_ketlulus" value="{{ Session::get('doc_ketlulus') }}">
+                    <input type="file" class="form-control" id="doc_ketlulus" name="doc_ketlulus"
+                        value="{{ Session::get('doc_ketlulus') }}">
                 </div>
                 <div class="form-group">
                     <label for="doc_foto">Foto 4x6 </label>
-                    <input type="file" class="form-control" id="doc_foto" name="doc_foto" value="{{ Session::get('doc_foto') }}">
+                    <input type="file" class="form-control" id="doc_foto" name="doc_foto"
+                        value="{{ Session::get('doc_foto') }}">
 
                 </div>
                 <div class="form-group">
                     <label for="doc_lainnya">Dokumen Pendukung Lainnya (KTM/Kartu Bantuan *jika ada) </label>
-                    <input type="file" class="form-control" id="doc_lainnya" name="doc_lainnya" value="{{ Session::get('doc_lainnya') }}">
+                    <input type="file" class="form-control" id="doc_lainnya" name="doc_lainnya"
+                        value="{{ Session::get('doc_lainnya') }}">
                 </div>
             </div>
         </div>

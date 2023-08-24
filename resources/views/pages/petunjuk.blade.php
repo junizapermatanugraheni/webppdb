@@ -32,12 +32,12 @@
                         </span>
                   
                         <h5 class="fw-bold">Tahap Pertama</h5>
-                        <p class="text-muted mb-2 fw-bold">11 March 2020</p>
+                        <p class="text-muted mb-2 fw-bold">Silahkan Buat Akun dan Login</p>
                         <p class="text-muted">
-                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit
-                          necessitatibus adipisci, ad alias, voluptate pariatur officia
-                          repellendus repellat inventore fugit perferendis totam dolor
-                          voluptas et corrupti distinctio maxime corporis optio?
+                          Jika belum memiliki akun maka melakukan pendaftaran terlebih dahulu,
+                          silahkan klik tombol hijau "Pendaftaran" di halaman awal. Isikan semua
+                          data yang diminta di dalam formulir. Setelah melakukan pendaftaran silahkan login menggunakan
+                          nik dan tanggal lahir anda.
                         </p>
                       </li>
                   
@@ -47,11 +47,10 @@
                           <i class="fas fa-hand-holding-usd text-primary fa-sm fa-fw"></i>
                         </span>
                         <h5 class="fw-bold">Tahap Kedua</h5>
-                        <p class="text-muted mb-2 fw-bold">19 March 2020</p>
+                        <p class="text-muted mb-2 fw-bold">Cetak Bukti Pendaftaran</p>
                         <p class="text-muted">
-                          Quisque ornare dui nibh, sagittis egestas nisi luctus nec. Sed
-                          aliquet laoreet sapien, eget pulvinar lectus maximus vel.
-                          Phasellus suscipit porta mattis.
+                         Silahkan melakukan cetak bukti pendaftaran untuk diberikan kepada pihak
+                         sekolah sebagai bukti.
                         </p>
                       </li>
                   
@@ -61,13 +60,11 @@
                           <i class="fas fa-users text-primary fa-sm fa-fw"></i>
                         </span>
                         <h5 class="fw-bold">Tahap Ketiga</h5>
-                        <p class="text-muted mb-2 fw-bold">24 June 2020</p>
+                        <p class="text-muted mb-2 fw-bold">Proses Seleksi</p>
                         <p class="text-muted">
-                          Orci varius natoque penatibus et magnis dis parturient montes,
-                          nascetur ridiculus mus. Nulla ullamcorper arcu lacus, maximus
-                          facilisis erat pellentesque nec. Duis et dui maximus dui aliquam
-                          convallis. Quisque consectetur purus erat, et ullamcorper sapien
-                          tincidunt vitae.
+                          Silahkan pantau terus untuk proses seleksi, untuk waktu menyesuaikan
+                          dengan terpenuhinya jumlah kuota siswa. Proses seleksi dapat dilihat diakun
+                          masing masing siswa.
                         </p>
                       </li>
                   
@@ -77,12 +74,10 @@
                           <i class="fas fa-money-bill-wave text-primary fa-sm fa-fw"></i>
                         </span>
                         <h5 class="fw-bold">Tahap Keempat</h5>
-                        <p class="text-muted mb-2 fw-bold">15 October 2020</p>
+                        <p class="text-muted mb-2 fw-bold">Penerimaan Siswa Baru</p>
                         <p class="text-muted">
-                          Nulla ac tellus convallis, pulvinar nulla ac, fermentum diam. Sed
-                          et urna sit amet massa dapibus tristique non finibus ligula. Nam
-                          pharetra libero nibh, id feugiat tortor rhoncus vitae. Ut suscipit
-                          vulputate mattis.
+                         Bagi yang lolos seleksi, bisa dilihat melalui akun masing masing siswa,
+                         kemudian melakukan pendaftaran ulang di sekolah SMK Ma'arif Wonosari
                         </p>
                       </li>
                     </ul>

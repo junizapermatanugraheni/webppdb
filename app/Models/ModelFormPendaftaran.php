@@ -2,12 +2,16 @@
 
 namespace App\Models;
 
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
-class ModelFormPendaftaran extends Model
+class ModelFormPendaftaran extends Authenticatable
 {
-    use HasFactory;
+    use HasApiTokens, HasFactory, Notifiable;
+
     protected $fillable = [
         'nopendaftaran',
         'nmlengkap',
@@ -30,12 +34,10 @@ class ModelFormPendaftaran extends Model
         'nilai_mtk',
         'nilai_ipa',
         'doc_nilaiujian',
-        'jurusan1',
-        'jurusan2',
+        'idjurusan',
         'doc_ketlulus',
         'doc_foto',
         'doc_lainnya',
     ];
     protected $table = 'model_form_pendaftarans';
-
 }
