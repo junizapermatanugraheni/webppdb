@@ -42,7 +42,7 @@ return [
         ],
         'calonsiswa' => [
             'driver' => 'session',
-            'provider' => 'model_form_pendaftarans',
+            'provider' => 'calonsiswa',
         ],
     ],
 

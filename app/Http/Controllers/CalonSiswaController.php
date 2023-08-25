@@ -18,7 +18,7 @@ class CalonSiswaController extends Controller
     public function login_siswa(Request $request)
     {
 
-        $db = 
+        
         $request->validate([
             'nik' => 'required',
             'tgllahir' => 'required',
@@ -28,9 +28,9 @@ class CalonSiswaController extends Controller
         ]);
 
 
-        $infologin = $request->only('nik','tgllahir');
+        // $infologin = $request->only('nik','tgllahir');
 
-        if (Auth::guard('calonsiswa')->attempt($infologin)) {
+        if (Auth::guard('calonsiswa')->attempt(['nik'=>$request->nik,'password'=>$request->tgllahir])) {
             return redirect('siswa/pendaftaran')->with('Success', 'Berhasil Login');
         } else {
             return redirect('siswa')->withErrors('NIK dan Tanggal Lahir Tidak Ditemukan');
@@ -134,6 +134,7 @@ class CalonSiswaController extends Controller
         ]);
 
         $nopendaftaran = Helper::IDGenerator(new ModelFormPendaftaran, 'nopendaftaran', 2, 'PPDB23');
+        $rata2 = ($request->nilai_bindo + $request->nilai_binggris + $request->nilai_mtk + $request->nilai_ipa)/4;
        
         $data = [
             'nopendaftaran' => $request->$nopendaftaran->nopendaftaran ?? $nopendaftaran,
@@ -156,11 +157,13 @@ class CalonSiswaController extends Controller
             'nilai_binggris' => $request->nilai_binggris,
             'nilai_mtk' => $request->nilai_mtk,
             'nilai_ipa' => $request->nilai_ipa,
+            'total'=>$rata2,
             'doc_nilaiujian' => $request->file('doc_nilaiujian')->store('public'),
             'idjurusan' => $request->idjurusan,
             'doc_ketlulus' => $request->file('doc_ketlulus')->store('public'),
             'doc_foto' => $request->file('doc_foto')->store('public'),
             'doc_lainnya' => $request->file('doc_lainnya')->store('public'),
+            'password' => $request->tgllahir,
         ];
 
         ModelFormPendaftaran::create($data);

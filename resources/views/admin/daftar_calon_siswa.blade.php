@@ -121,11 +121,11 @@
                                                     {{ $item->nilai_ipa }}
                                                 </td>
                                                 <td class="align-middle text-center">
-                                                    {{ $rata2 }}
+                                                    {{ $item->total }}
                                                 </td>
                                             </tr>
                                         @endforeach
-                                        <?php?> ?>
+                                   
                                     </tbody>
                                 </table>
                             </div>

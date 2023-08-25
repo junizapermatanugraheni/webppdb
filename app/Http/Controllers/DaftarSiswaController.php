@@ -9,8 +9,13 @@ class DaftarSiswaController extends Controller
 {
     function index()
     {
-        $data = daftarsiswa::all();
-        $rank = daftarsiswa::orderBy('nilai_bindo')->get();
+        $data = daftarsiswa::orderBy('total','desc')
+        ->orderBy('nilai_mtk','desc')
+        ->orderBy('nilai_ipa','desc')
+        ->orderBy('nilai_binggris','desc')
+        ->get();
+        
+       
         return view('admin/daftar_calon_siswa')->with('data', $data);
     }
 }

@@ -40,4 +40,5 @@ class ModelFormPendaftaran extends Authenticatable
         'doc_lainnya',
     ];
     protected $table = 'model_form_pendaftarans';
+    
 }
