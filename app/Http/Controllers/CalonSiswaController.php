@@ -45,7 +45,7 @@ class CalonSiswaController extends Controller
 
     public function form_pendaftaran()
     {
-        $jurusan = MJurusan::all('nama_jurusan');
+        $jurusan = MJurusan::all();
         return view('siswa/form_pendaftaran', compact('jurusan'));
     }
 
@@ -74,7 +74,6 @@ class CalonSiswaController extends Controller
         Session::flash('nilai_ipa', $request->nilai_ipa);
         Session::flash('doc_nilaiujian', $request->file('doc_nilaiujian')->store('public'),);
         Session::flash('idjurusan', $request->idjurusan);
-
         Session::flash('doc_ketlulus', $request->file('doc_ketlulus')->store('public'));
         Session::flash('doc_foto', $request->file('doc_foto')->store('public'));
         Session::flash('doc_lainnya',  $request->file('doc_lainnya')->store('public'));
@@ -101,7 +100,6 @@ class CalonSiswaController extends Controller
             'nilai_ipa' => 'required',
             'doc_nilaiujian' => 'required|mimes:jpeg,pdf,jpg,png',
             'idjurusan' => 'required',
-           
             'doc_ketlulus' => 'required|mimes:jpeg,pdf,jpg,png',
             'doc_foto' => 'required|mimes:jpeg,pdf,jpg,png',
             'doc_lainnya' => 'mimes:jpeg,pdf,jpg,png',
@@ -128,7 +126,6 @@ class CalonSiswaController extends Controller
             'doc_nilaiujian.required' => 'Scan Document Nilai harus diupload dengan format jpeg,pdf,jpg,png',
             'doc_nilaiujian.mimes' => 'doc_nilaiujian Format yang diperbolehkan jpeg,pdf,jpg',
             'idjurusan.required' => 'Pilihan Jurusan harus diisi',
-            
             'doc_ketlulus.required' => 'Document Surat Keterangan Lulus harus diupload dengan format jpeg,pdf,jpg,png',
             'doc_ketlulus.mimes' => 'doc_ketlulus Format yang diperbolehkan jpeg,pdf,jpg',
             'doc_foto.required' => 'doc_foto Document Foto harus diupload dengan format jpeg,pdf,jpg,png',

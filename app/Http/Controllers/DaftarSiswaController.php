@@ -10,6 +10,7 @@ class DaftarSiswaController extends Controller
     function index()
     {
         $data = daftarsiswa::all();
+        $rank = daftarsiswa::orderBy('nilai_bindo')->get();
         return view('admin/daftar_calon_siswa')->with('data', $data);
     }
 }

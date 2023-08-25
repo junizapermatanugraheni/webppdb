@@ -34,8 +34,7 @@ return new class extends Migration
             $table->integer('nilai_mtk');
             $table->integer('nilai_ipa');
             $table->string('doc_nilaiujian');
-            $table->string('idjurusan1');
-            $table->string('idjurusan2');
+            $table->string('idjurusan');
             $table->string('doc_ketlulus');
             $table->string('doc_foto');
             $table->string('doc_lainnya');

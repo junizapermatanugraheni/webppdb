@@ -59,6 +59,9 @@
                                     <thead>
                                         <tr>
                                             <th
+                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Ranking</th>
+                                            <th
                                                 class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                 No Pendaftaran</th>
                                             <th
@@ -87,12 +90,22 @@
                                             <th
                                                 class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                 Total</th>
+
                                             {{-- <th class="text-secondary opacity-7"></th> --}}
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($data as $item)
+                                        <?php $no = 0; ?>
+                                        @foreach ($data as $no => $item)
+                                            <?php
+                                            $no++;
+                                            $rata2 = ($item->nilai_ipa + $item->nilai_bindo + $item->nilai_mtk + $item->nilai_binggris) / 4;
+                                            
+                                            ?>
                                             <tr>
+                                                <td class="align-middle text-center">
+                                                    {{ $no }}
+                                                </td>
                                                 <td class="align-middle text-center">{{ $item->nopendaftaran }}</td>
                                                 <td>{{ $item->nmlengkap }}</td>
                                                 <td>{{ $item->asal_sekolah }}</td>
@@ -108,11 +121,11 @@
                                                     {{ $item->nilai_ipa }}
                                                 </td>
                                                 <td class="align-middle text-center">
-                                                    {{ ($item->nilai_ipa + $item->nilai_bindo + $item->nilai_mtk + $item->nilai_binggris) / 4 }}
+                                                    {{ $rata2 }}
                                                 </td>
                                             </tr>
                                         @endforeach
-
+                                        <?php?> ?>
                                     </tbody>
                                 </table>
                             </div>
