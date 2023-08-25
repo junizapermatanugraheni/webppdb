@@ -44,9 +44,9 @@
                                 <div class="mb-3">
                                     <div class="mb-2 w-100">
                                         <label class="text-muted" for="tgllahir">Password *(tanggal lahir, contoh :
-                                            20072001)</label>
+                                            2005-08-29)</label>
                                     </div>
-                                    <input id="tgllahir" type="password" class="form-control" name="tgllahir" required>
+                                    <input id="password" type="password" class="form-control" name="password" required>
                                 </div>
 
                                 <div class="d-flex align-items-center">

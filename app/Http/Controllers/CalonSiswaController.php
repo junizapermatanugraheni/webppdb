@@ -16,22 +16,25 @@ class CalonSiswaController extends Controller
         return view('siswa/login_siswa');
     }
     public function login_siswa(Request $request)
-    {
-
-        
+    { 
         $request->validate([
             'nik' => 'required',
-            'tgllahir' => 'required',
+            'password' => 'required',
         ], [
             'nik.required' => 'nik harus diisi',
-            'tgllahir.require' => 'Tanggal Lahir harus diisi',
+            'password.require' => 'Tanggal Lahir harus diisi',
         ]);
 
 
-        // $infologin = $request->only('nik','tgllahir');
-
-        if (Auth::guard('calonsiswa')->attempt(['nik'=>$request->nik,'password'=>$request->tgllahir])) {
-            return redirect('siswa/pendaftaran')->with('Success', 'Berhasil Login');
+        $infologin = $request->only('nik','password');
+        // $infologin = [
+        //     'nik' => $request->nik,
+        //     'password' => $request->password,
+        // ];
+        // dd($request);
+        if (Auth::guard('calonsiswa')->attempt($infologin)) {
+            $request->session()->regenerate();
+            return redirect('siswa/pendaftaran_siswa')->with('Success', 'Berhasil Login');
         } else {
             return redirect('siswa')->withErrors('NIK dan Tanggal Lahir Tidak Ditemukan');
         }
@@ -52,7 +55,6 @@ class CalonSiswaController extends Controller
     public function create(Request $request)
     {
         
-        // Session::flash('nopendaftaran', $request->Helper::IDGenerator(new ModelFormPendaftaran, 'nopendaftaran', 2, 'PPDB23'));
         Session::flash('nik', $request->nik);
         Session::flash('tgllahir', $request->tgllahir);
         Session::flash('tmplahir', $request->tmplahir);
@@ -76,7 +78,8 @@ class CalonSiswaController extends Controller
         Session::flash('idjurusan', $request->idjurusan);
         Session::flash('doc_ketlulus', $request->file('doc_ketlulus')->store('public'));
         Session::flash('doc_foto', $request->file('doc_foto')->store('public'));
-        Session::flash('doc_lainnya',  $request->file('doc_lainnya')->store('public'));
+        Session::flash('doc_lainnya', $request->file('doc_lainnya')->store('public'));
+        // Session::flash('doc_lainnya',  $request->file('doc_lainnya')->store('public'));
 
         $request->validate([
             'nik' => 'required',
@@ -163,7 +166,7 @@ class CalonSiswaController extends Controller
             'doc_ketlulus' => $request->file('doc_ketlulus')->store('public'),
             'doc_foto' => $request->file('doc_foto')->store('public'),
             'doc_lainnya' => $request->file('doc_lainnya')->store('public'),
-            'password' => $request->tgllahir,
+            'password' => bcrypt($request->tgllahir),
         ];
 
         ModelFormPendaftaran::create($data);
@@ -173,6 +176,7 @@ class CalonSiswaController extends Controller
 
     public function pendaftaran()
     {
+        // dd(auth()->user());
         return view('siswa/pendaftaran_siswa');
     }
 }

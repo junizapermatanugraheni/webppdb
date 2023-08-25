@@ -45,6 +45,7 @@ class AdminController extends Controller
     }
     public function admin()
     {
+        // dd(auth()->user());
         return view('admin/dashboard_admin');
     }
     public function kepsek()
@@ -53,7 +54,7 @@ class AdminController extends Controller
     }
     public function dashboard()
     {
-        
+        // dd(auth()->user());
         return view('admin/dashboard_admin');
     }
     public function daftarsiswa()

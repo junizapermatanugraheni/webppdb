@@ -12,6 +12,7 @@ class ModelFormPendaftaran extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $guard = 'calonsiswa';
     protected $fillable = [
         'nopendaftaran',
         'nmlengkap',
@@ -38,6 +39,8 @@ class ModelFormPendaftaran extends Authenticatable
         'doc_ketlulus',
         'doc_foto',
         'doc_lainnya',
+        'password',
+        'total',
     ];
     protected $table = 'model_form_pendaftarans';
     
